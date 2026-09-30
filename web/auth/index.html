@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete Authentication & OTP Flow</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="app-container">
+
+    <!-- Auth Card (Sign In / Register) -->
+    <div id="authCard" class="card auth-card">
+      <div class="auth-tabs">
+        <button id="tabSignin" class="tab-btn active" type="button">Sign In</button>
+        <button id="tabRegister" class="tab-btn" type="button">Register</button>
+      </div>
+
+      <!-- SIGN IN FORM -->
+      <form id="signinForm" class="auth-form active" novalidate>
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Sign in with your email or mobile number.</p>
+
+        <!-- Email or Mobile Field -->
+        <div class="form-group">
+          <label for="signinAccount">Email or Mobile Number</label>
+          <input type="text" id="signinAccount" placeholder="user@domain.com or 09171234567" autocomplete="username" />
+          <span class="error-msg" id="signinAccountError"></span>
+        </div>
+
+        <!-- Password Field with Eye Toggle -->
+        <div class="form-group">
+          <label for="signinPassword">Password</label>
+          <div class="input-password-wrapper">
+            <input type="password" id="signinPassword" placeholder="••••••••" autocomplete="current-password" />
+            <button type="button" class="password-toggle-btn" id="toggleSigninPassword" aria-label="Toggle password visibility">
+              <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path class="eye-open" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle class="eye-open" cx="12" cy="12" r="3"></circle>
+                <line class="eye-off hidden" x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <span class="error-msg" id="signinPasswordError"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign In</button>
+      </form>
+
+      <!-- REGISTER FORM WITH OTP -->
+      <form id="registerForm" class="auth-form" novalidate>
+        <h2>Create Account</h2>
+        <p class="subtitle">Complete registration with OTP verification.</p>
+
+        <!-- Email or Mobile Field with Send OTP Button -->
+        <div class="form-group">
+          <label for="registerAccount">Email or Mobile Number</label>
+          <div class="input-action-wrapper">
+            <input type="text" id="registerAccount" placeholder="user@domain.com or 09171234567" autocomplete="username" />
+            <button type="button" id="sendOtpBtn" class="btn btn-action">Send OTP</button>
+          </div>
+          <span class="error-msg" id="registerAccountError"></span>
+        </div>
+
+        <!-- Enter OTP Field (Appears / activates after Send OTP) -->
+        <div class="form-group otp-group hidden" id="otpGroup">
+          <div class="label-row">
+            <label for="registerOtp">Enter 6-Digit OTP</label>
+            <span id="otpTimerText" class="otp-timer-text">Resend in <strong id="timerCountdown">60</strong>s</span>
+          </div>
+          <input type="text" id="registerOtp" placeholder="e.g. 123456" maxlength="6" autocomplete="one-time-code" />
+          <span class="error-msg" id="registerOtpError"></span>
+        </div>
+
+        <!-- Password Field with Eye Toggle -->
+        <div class="form-group">
+          <label for="registerPassword">Password</label>
+          <div class="input-password-wrapper">
+            <input type="password" id="registerPassword" placeholder="Min 8 chars, 1 upper, 1 number, 1 special" autocomplete="new-password" />
+            <button type="button" class="password-toggle-btn" id="toggleRegisterPassword" aria-label="Toggle password visibility">
+              <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path class="eye-open" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle class="eye-open" cx="12" cy="12" r="3"></circle>
+                <line class="eye-off hidden" x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <span class="error-msg" id="registerPasswordError"></span>
+        </div>
+
+        <!-- Confirm Password Field with Eye Toggle -->
+        <div class="form-group">
+          <label for="registerConfirmPassword">Confirm Password</label>
+          <div class="input-password-wrapper">
+            <input type="password" id="registerConfirmPassword" placeholder="Re-enter password" autocomplete="new-password" />
+            <button type="button" class="password-toggle-btn" id="toggleConfirmPassword" aria-label="Toggle password visibility">
+              <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path class="eye-open" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle class="eye-open" cx="12" cy="12" r="3"></circle>
+                <line class="eye-off hidden" x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <span class="error-msg" id="registerConfirmPasswordError"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register Account</button>
+      </form>
+    </div>
+
+    <!-- DASHBOARD VIEW -->
+    <div id="dashboardView" class="card dashboard-card hidden">
+      <div class="dashboard-header">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div>
+          <h2 id="dashboardUsername">Welcome User</h2>
+          <p id="dashboardAccount" class="subtitle">user@domain.com</p>
+        </div>
+      </div>
+
+      <div class="dashboard-body">
+        <div class="status-badge">Session Active & Verified</div>
+        <p>You have successfully authenticated into the system.</p>
+        <button id="logoutTriggerBtn" type="button" class="btn btn-danger">Log Out</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LOG OUT CONFIRMATION MODAL POPUP -->
+  <div id="logoutModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Confirm Log Out</h3>
+        <button id="closeModalCross" class="modal-close-icon" type="button" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="modalDesc">Are you sure you want to log out of your account?</p>
+      </div>
+      <div class="modal-actions">
+        <button id="cancelLogoutBtn" type="button" class="btn btn-secondary">Cancel</button>
+        <button id="confirmLogoutBtn" type="button" class="btn btn-danger">Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

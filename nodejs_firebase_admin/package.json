@@ -1,0 +1,12 @@
+{
+  "name": "aramielle-firebase-seeder",
+  "version": "1.0.0",
+  "description": "Node.js Firestore Seeder and Integration Script for Aramielle Restaurant",
+  "main": "seed_firestore.js",
+  "scripts": {
+    "start": "node seed_firestore.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0"
+  }
+}

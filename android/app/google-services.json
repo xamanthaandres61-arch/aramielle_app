@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "17089549640",
+    "project_id": "aramielle-f0523",
+    "storage_bucket": "aramielle-f0523.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17089549640:android:5d202fb4dd35bd2acacf7d",
+        "android_client_info": {
+          "package_name": "com.example.aramielle_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17089549640-6u75b94j9arg5adrnbg2p9rvs79r9icp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEQmBIOA-zBW0kT0p58psZuEp5Q_S9egQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17089549640-6u75b94j9arg5adrnbg2p9rvs79r9icp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17089549640:android:3d7d9a0cf7f93334cacf7d",
+        "android_client_info": {
+          "package_name": "com.example.aramiellerestaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17089549640-fpeougabn4rilggc8mh36tneis9dhbpc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aramiellerestaurant",
+            "certificate_hash": "d157bace697cd2f47b3d831b3e3e596adbf5daa9"
+          }
+        },
+        {
+          "client_id": "17089549640-6u75b94j9arg5adrnbg2p9rvs79r9icp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEQmBIOA-zBW0kT0p58psZuEp5Q_S9egQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17089549640-6u75b94j9arg5adrnbg2p9rvs79r9icp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
